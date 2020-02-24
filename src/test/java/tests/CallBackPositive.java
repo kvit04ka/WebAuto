@@ -6,15 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class CallBackPositive {
+public class CallBackPositive  extends BaseTest {
 
-    WebDriver driver = new ChromeDriver();
 
     @Test
-
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -22,12 +19,12 @@ public class CallBackPositive {
 
         By callback = By.className("callback-btn");
         WebElement callbackEl = driver.findElement(callback);
-        WebDriverWait waitForPresence = new WebDriverWait(driver, 15);
-        waitForPresence.until(ExpectedConditions.elementToBeClickable(callback));
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.elementToBeClickable(callback));
         callbackEl.click();
 
         WebElement nameInput = driver.findElement(By.xpath("//input[@name='name']"));
-        waitForPresence.until(ExpectedConditions.elementToBeClickable(nameInput));
+        wait.until(ExpectedConditions.elementToBeClickable(nameInput));
         nameInput.click();
         driver.findElement(By.xpath("//input[@name='name']")).sendKeys("Test Contact Name");
 
@@ -37,7 +34,7 @@ public class CallBackPositive {
 
 
         WebElement submitBtn = driver.findElement(( By.xpath("//div[@class='b-header-contacte-phone-block']//input[@type='submit']") ));
-        waitForPresence.until(ExpectedConditions.elementToBeClickable(submitBtn));
+        wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
         submitBtn.click();
 
         By callBackMsg = By.xpath("//div[@class='b-header-contacte-phone-thank hidden']");
@@ -48,9 +45,4 @@ public class CallBackPositive {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-
-    }
-}
+   }
