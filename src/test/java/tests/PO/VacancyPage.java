@@ -1,5 +1,7 @@
 package test.java.tests.PO;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class VacancyPage {
     WebDriver driver;
     WebDriverWait wait;
+    Logger logger = LogManager.getLogger(VacancyPage.class);
 
     public VacancyPage(WebDriver driver) {
         this.driver = driver;

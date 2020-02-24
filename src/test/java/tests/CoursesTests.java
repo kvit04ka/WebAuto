@@ -15,7 +15,7 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class EveningCourses extends BaseTest {
+public class CoursesTests extends BaseTest {
     HomePage homePage;
 
     @BeforeMethod
@@ -25,7 +25,7 @@ public class EveningCourses extends BaseTest {
     }
 
     @Test
-    public void courseTest() {
+    public void eveCourseTest() {
         homePage
                 .open()
                 .openEveningCourses()
@@ -51,6 +51,29 @@ public class EveningCourses extends BaseTest {
                 assertTrue(isContains, String.format("Expected course '%s' to be present on the page", course));
             }
         }
+
+    @Test
+    public void dayTimeCourses() throws InterruptedException {
+        homePage.open()
+                .openDayTimeCourses()
+                .openDayCourse();
+
+        String[] courseExpected = {"Microsoft", "Cisco", "UNIX / Linux",
+                "Oracle", "ITIL", "Программирование", "Управление проектами",
+                "Пользовательские курсы", "Vmware", "Teradata", "EC-Council"};
+        List<WebElement> courseElements = driver.findElements(By.xpath("//*[@id='course']/div/div/h2"));
+        wait.until(ExpectedConditions.visibilityOfAllElements(courseElements));
+        List<String> courseActual = new ArrayList<String>();
+
+        for(WebElement el: courseElements) {
+            courseActual.add(el.getText());
+        }
+        for(String course: courseExpected) {
+            boolean isContains = courseActual.contains(course);
+            assertTrue(isContains, String.format("Expected language '%s' to be present on the page", course));
+        }
+
+    }
     }
 
 

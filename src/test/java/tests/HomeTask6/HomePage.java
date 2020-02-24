@@ -7,34 +7,49 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
-          WebDriver driver;
-        WebDriverWait wait;
+    WebDriver driver;
+    WebDriverWait wait;
 
-        public HomePage(WebDriver driver){
-            this.driver = driver;
-            wait = new WebDriverWait(this.driver, 30);
-
-        }
-
-        public HomePage open(){
-            driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
-         //   WebElement spinner = driver.findElement(By.id("preload-it"));
-         //   wait.until(ExpectedConditions.visibilityOf(spinner));
-         //   wait.until(ExpectedConditions.invisibilityOf(spinner));
-            return this;
-        }
-
-        public HomePage openEveningCourses(){
-            WebElement eveningCourses = driver.findElement(By.id("menu-item-7870"));
-            wait.until(ExpectedConditions.elementToBeClickable(eveningCourses));
-            eveningCourses.click();
-            return this;
-
-        }
-        public HomePage openCourses(){
-            WebElement courses = driver.findElement(By.id("menu-item-7871"));
-            courses.click();
-            return this;
-        }
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(this.driver, 30);
 
     }
+
+    public HomePage open() {
+        driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
+        //   WebElement spinner = driver.findElement(By.id("preload-it"));
+        //   wait.until(ExpectedConditions.visibilityOf(spinner));
+        //   wait.until(ExpectedConditions.invisibilityOf(spinner));
+        return this;
+    }
+
+    public HomePage openEveningCourses() {
+        WebElement eveningCourses = driver.findElement(By.id("menu-item-7870"));
+        wait.until(ExpectedConditions.elementToBeClickable(eveningCourses));
+        eveningCourses.click();
+        return this;
+
+    }
+
+    public HomePage openCourses() {
+        WebElement courses = driver.findElement(By.id("menu-item-7871"));
+        courses.click();
+        return this;
+    }
+
+    public HomePage openDayTimeCourses() {
+        WebElement dayCourses = driver.findElement(By.id("menu-item-7956"));
+        wait.until(ExpectedConditions.visibilityOf(dayCourses));
+        dayCourses.click();
+        return this;
+
+    }
+
+    public HomePage openDayCourse() {
+        WebElement DayCourse = driver.findElement(By.xpath("//*[@id='menu-item-7885']/a"));
+        wait.until(ExpectedConditions.visibilityOf(DayCourse));
+        DayCourse.click();
+        return this;
+    }
+}

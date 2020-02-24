@@ -1,5 +1,7 @@
 package test.java.tests.PO;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,14 +11,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
     WebDriver driver;
     WebDriverWait wait;
+    Logger logger = LogManager.getLogger(HomePage.class);
 
     public HomePage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 30);
 
+
     }
 
     public HomePage open(){
+        logger.info("Home page is opened");
+        logger.debug("Home page is opened");
         driver.get("http://iteaua-develop.demo.gns-it.com/about-itea/");
         WebElement spinner = driver.findElement(By.id("preload-it"));
         wait.until(ExpectedConditions.visibilityOf(spinner));
