@@ -11,6 +11,10 @@ import static org.testng.Assert.assertEquals;
 
 public class CallBackNegative extends BaseTest {
 
+        public CallBackNegative(WebDriver driver) {
+                super(driver);
+        }
+
         @Test
         public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");

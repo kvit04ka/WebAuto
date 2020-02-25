@@ -34,7 +34,11 @@ public class ForPO extends BaseTest {
    HomePage homePage;
    VacancyPage vacancyPage;
 
-   @BeforeMethod
+    public ForPO(WebDriver driver) {
+        super(driver);
+    }
+
+    @BeforeMethod
    public  void pageLoad(){
        homePage = new HomePage(driver);
        vacancyPage = new VacancyPage(driver);

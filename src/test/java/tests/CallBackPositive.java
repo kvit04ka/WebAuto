@@ -11,6 +11,10 @@ import org.testng.annotations.Test;
 public class CallBackPositive  extends BaseTest {
 
 
+    public CallBackPositive(WebDriver driver) {
+        super(driver);
+    }
+
     @Test
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");

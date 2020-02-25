@@ -12,6 +12,9 @@ public class BaseTest {
     WebDriver driver;
     WebDriverWait wait;
 
+    public BaseTest(WebDriver driver) {
+    }
+
     @BeforeMethod
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -24,6 +27,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown(){
+
         driver.quit();
     }
 }
