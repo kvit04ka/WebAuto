@@ -136,26 +136,20 @@ public class CoursesTests extends BaseTest{
 
         }
 
-        @Test (dataProvider = "providerEveCourses")
-        public void ListCoursesLocation(String courseTitle){
-           homePage
-                   .open()
-                   .openEveningCourses()
-                   .openCourses()
-                   .openCoursePage(courseTitle);
-           homePage.clickPayBtn();
-    //        By buttonPay = By.xpath("//*[@id=\"level-form_course-list\"]/form[1]/ul/li/p[3]/button");
-
-    //        WebElement buttonPayEl = driver.findElement(buttonPay);
-     //       wait.until(ExpectedConditions.elementToBeClickable(buttonPay));
-     //       buttonPayEl.click();
-        //    return this;
-
-           assertTrue(homePage.checkInLocation("Берестейская"));
-           assertFalse(homePage.checkInLocation("Позняки"));
-           assertFalse(homePage.checkInLocation("ВДНХ"));
-           assertFalse(homePage.selectedCheckbox());
-        }
+    @Test (dataProvider = "providerEveCourses")
+    public void ListCoursesLocation(String courseTitle){
+        homePage
+                .open()
+                .openEveningCourses()
+                .openCourses()
+                .openCoursePage(courseTitle);
+        homePage.clickPayBtn();
+        assertTrue(homePage.checkInLocation("Берестейська"));
+        assertFalse(homePage.checkInLocation("Позняки"));
+        assertFalse(homePage.checkInLocation("ВДНГ"));
+        assertFalse(homePage.selectedCheckbox());
     }
+}
+
 
 
