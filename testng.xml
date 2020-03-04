@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="HomeWork">
+    <listeners>
+        <listener class-name="test.java.utils.TestListener"></listener>
+        <listener class-name="test.java.utils.AnnatationTransformer"></listener>
+    </listeners>
+    <test name="Listeners">
+        <classes>
+            <class name="test.java.tests.CoursesTests"></class>
+        </classes>
+    </test>
+</suite>

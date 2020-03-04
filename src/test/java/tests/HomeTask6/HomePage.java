@@ -1,5 +1,6 @@
 package test.java.tests.HomeTask6;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +25,18 @@ public class HomePage {
 
         }
 
+        @Step("Open home page")
         public HomePage open(){
             driver.get("http://iteaua-develop.demo.gns-it.com/uk/");
             //   WebElement spinner = driver.findElement(By.id("preload-it"));
             //   wait.until(ExpectedConditions.visibilityOf(spinner));
             //   wait.until(ExpectedConditions.invisibilityOf(spinner));
+            logger.info("Home page is opened");
+            driver.get(PropertyLoader.getProperty("url"));
             return this;
         }
 
+        @Step("Open Evening courses menu item")
         public HomePage openEveningCourses(){
             WebElement eveningCourses = driver.findElement(By.id("menu-item-7870"));
             wait.until(ExpectedConditions.elementToBeClickable(eveningCourses));
@@ -39,6 +45,8 @@ public class HomePage {
             return this;
 
         }
+
+        @Step("Click on the Courses under Drop-down menu")
         public HomePage openCourses(){
             WebElement courses = driver.findElement(By.id("menu-item-7871"));
             courses.click();
@@ -46,6 +54,7 @@ public class HomePage {
             return this;
         }
 
+        @Step("Open Day courses menu item")
         public HomePage openDayTimeCourses(){
             WebElement dayCourses = driver.findElement(By.id("menu-item-7956"));
             wait.until(ExpectedConditions.visibilityOf(dayCourses));
@@ -53,6 +62,8 @@ public class HomePage {
             logger.info("opened DayTime courses drop-dorwn list");
             return this;
         }
+
+        @Step("Open Courses under the drop-down")
         public HomePage openDayCourse(){
             WebElement DayCourse = driver.findElement(By.id("menu-item-7885"));
             wait.until(ExpectedConditions.visibilityOf(DayCourse));
@@ -60,6 +71,7 @@ public class HomePage {
             logger.debug("Opened Courses menu item under the DayCourses");
             return this;
         }
+
         public List<String> getListCourses(){
             List<WebElement> courseElements = driver.findElements(By.xpath("//*[@id='course']/div/div/h2"));
             wait.until(ExpectedConditions.visibilityOfAllElements(courseElements));
@@ -70,6 +82,7 @@ public class HomePage {
             return courseActual;
         }
 
+        @Step("Open course page of {courseTitle}")
         public HomePage openCoursePage(String courseTitle){
             WebElement eveningCourses = driver.findElement(By.xpath("//h2[contains(text(), '" + courseTitle + "')]/.."));
             wait.until(ExpectedConditions.elementToBeClickable(eveningCourses));
@@ -80,6 +93,7 @@ public class HomePage {
 
         }
 
+        @Step("Clicked Buy button to buy with full payment")
       public HomePage clickPayBtn(){
            By buttonPay = By.xpath("//*[@id=\"level-form_course-list\"]/form[1]/ul/li/p[3]/button");
           WebElement buttonPayEl = driver.findElement(buttonPay);
@@ -88,6 +102,8 @@ public class HomePage {
            logger.debug("Clicked Buy button");
            return this;
     }
+
+
     public boolean checkInLocation(String location) {
         By locationEl = By.xpath("//input[@id=//div[contains(text(), '" + location + "')]/../@for]");
         WebElement courseLocation = driver.findElement(locationEl);

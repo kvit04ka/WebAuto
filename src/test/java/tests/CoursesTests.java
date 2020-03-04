@@ -1,5 +1,8 @@
 package test.java.tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.tests.HomeTask6.CoursesPageData;
 import test.java.tests.HomeTask6.HomePage;
+import test.java.utils.RetryAnalyzer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +19,8 @@ import java.util.List;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+
+@Epic("Courses")
 public class CoursesTests extends BaseTest{
     HomePage homePage;
    // CoursesPageData coursesPageData;
@@ -27,7 +33,9 @@ public class CoursesTests extends BaseTest{
 
     }
 
-    @Test
+    @Story("Evening courses")
+    @Feature("Checking the list of courses")
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void eveCourses() {
         homePage
                 .open()
@@ -75,6 +83,8 @@ public class CoursesTests extends BaseTest{
             }
         }
 
+        @Story("Day Time courses")
+        @Feature("Checking the list of courses")
         @Test
         public void dayTimeCourses()throws InterruptedException{
         homePage
@@ -111,26 +121,26 @@ public class CoursesTests extends BaseTest{
         public Object[][] providerEveCourses(){
         return new  Object[][]{
                 {"Тестування"},
-        //        {"Frontend development"},
-        //        {"JS development"},
-        //        {"Веб-дизайн"},
-       //         {"PHP"},
-        //        {"Java programming"},
-        //        {"Python"},
-        //        {"Data Science/Machine Learning"},
-       //         {"C# /.NET development"},
-       //         {"C++"},
-       //         {"Game Development"},
-       //         {"DEVOPS"},
-        //        {"Digital Marketing"},
-       //         {"Управління персоналом"},
-        //        {"Управління проектами"},
-       //         {"Mobile development"},
-      //          {"Відеомонтаж"},
-      //          {"Cisco"},
-      //          {"Go development"},
-      //          {"Кібербезпека"},
-      //          {"Менеджмент"}
+               {"Frontend development"},
+                {"JS development"},
+               {"Веб-дизайн"},
+                {"PHP"},
+               {"Java programming"},
+                {"Python"},
+               {"Data Science/Machine Learning"},
+               {"C# /.NET development"},
+                {"C++"},
+               {"Game Development"},
+                {"DEVOPS"},
+               {"Digital Marketing"},
+                {"Управління персоналом"},
+               {"Управління проектами"},
+                {"Mobile development"},
+                {"Відеомонтаж"},
+                {"Cisco"},
+                {"Go development"},
+               {"Кібербезпека"},
+               {"Менеджмент"}
 
         };
 
@@ -149,6 +159,8 @@ public class CoursesTests extends BaseTest{
         assertFalse(homePage.checkInLocation("ВДНГ"));
         assertFalse(homePage.selectedCheckbox());
     }
+
+
 }
 
 
