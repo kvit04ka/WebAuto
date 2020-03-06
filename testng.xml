@@ -6,7 +6,7 @@
     </listeners>
     <test name="Listeners">
         <classes>
-            <class name="test.java.tests.CoursesTests"></class>
+            <class name="test.java.tests.Random"></class>
         </classes>
     </test>
 </suite>

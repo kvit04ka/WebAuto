@@ -103,7 +103,7 @@ public class HomePage {
            return this;
     }
 
-
+    @Step("Checking current selected location")
     public boolean checkInLocation(String location) {
         By locationEl = By.xpath("//input[@id=//div[contains(text(), '" + location + "')]/../@for]");
         WebElement courseLocation = driver.findElement(locationEl);
@@ -112,6 +112,7 @@ public class HomePage {
         return courseLocation.isSelected();
     }
 
+    @Step("Check if Privacy checkbox is unselected")
     public boolean selectedCheckbox(){
         By checkbox = By.xpath("//div[@id='privacy-policy']/label/span");
         WebElement privacyPolicy = driver.findElement(checkbox);
