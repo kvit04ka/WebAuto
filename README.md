@@ -1,2 +1,3 @@
 # WebAuto
-- New change 17.02 - Added new test clasess "CallBackPositive' and 'CallBackNegative'
+- New change 06.03 Allure home task
+The test is located in the file 'Random'
